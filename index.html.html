@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feng Shui Mastery: Transform Your Space, Transform Your Life</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles & Reset */
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            background-color: #f8f8f8;
+            color: #333;
+            direction: ltr;
+            overflow-x: hidden;
+        }
+
+        /* Headers & Sections */
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        /* Desktop Header Navigation */
+        .header-nav {
+            position: absolute;
+            top: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+        }
+
+        .header-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 50px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.15rem;
+            transition: color 0.3s ease;
+        }
+
+        .header-nav ul li a:hover {
+            color: #ffb703;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-icon {
+            display: none; /* Initially hidden on desktop */
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 30;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .mobile-menu-icon:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        /* Mobile Menu Links */
+        .mobile-menu {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 250px;
+            background-color: rgba(44, 62, 80, 0.95);
+            z-index: 25;
+            padding-top: 80px;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu ul li a {
+            display: block;
+            padding: 15px 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .mobile-menu ul li a:hover {
+            background-color: #34495e;
+        }
+
+        /* Hero Section */
+        .feng-shui-hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://i.pinimg.com/736x/f8/41/10/f8411015a07c40ca61cc20600c144981.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            padding: 0 20px;
+            margin-top: 200px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .cta-button {
+            background-color: #ffb703;
+            color: #333;
+            padding: 20px 60px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            display: inline-block;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #ffa500;
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
+        /* Countdown Timer */
+        .countdown-timer {
+            margin-top: 20px;
+            background: linear-gradient(45deg, #2c3e50, #1a2531);
+            padding: 10px 20px; 
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: #fff;
+            border: 2px solid #ffb703;
+            max-width: 300px; 
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .countdown-timer p {
+            font-size: 0.9rem; 
+            margin: 0 0 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #timer-display {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; 
+            color: #ffb703;
+            font-weight: bold;
+            text-shadow: 0 0 5px #ffb703, 0 0 10px #ffb703, 0 0 15px #ffb703;
+        }
+        
+        .timer-value {
+            font-size: 1.5em; 
+            font-weight: bold;
+        }
+        
+        .timer-label {
+            font-size: 0.8em; 
+            text-transform: uppercase;
+        }
+
+
+        /* Value Proposition Section */
+        .value-prop-section {
+            background-color: #fff;
+            padding: 80px 20px;
+        }
+
+        .value-props-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .prop-item {
+            background-color: #fcfcfc;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .prop-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .prop-item i {
+            font-size: 3.5rem;
+            color: #ffb703;
+            margin-bottom: 20px;
+        }
+
+        .prop-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .prop-item p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: #f0f0f0;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .testimonial-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-item {
+            flex: 1 1 300px;
+            box-sizing: border-box;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .testimonial-item p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .testimonial-item h4 {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .testimonial-item .client-icon {
+            font-size: 4rem;
+            color: #ffb703;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* ------------------------------------------- */
+        /* Responsive Media Queries           */
+        /* ------------------------------------------- */
+
+        @media (max-width: 1024px) {
+            .hero-content h1 { font-size: 3.5rem; }
+            .hero-content p { font-size: 1.5rem; }
+            .section-heading { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { font-size: 1.2rem; }
+            .testimonials-section { padding: 50px 15px; }
+            .testimonial-item { padding: 30px; }
+            .section-heading { font-size: 2rem; }
+            .hero-content {
+                margin-top: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content p { font-size: 1rem; }
+            /* Hide desktop nav and show mobile menu button */
+            .header-nav { display: none; }
+            .mobile-menu-icon { display: block; }
+
+            .value-prop-section { padding: 40px 15px; }
+            .testimonials-section h2 { font-size: 1.8rem; }
+            .testimonial-container {
+                flex-direction: column;
+            }
+            .hero-content {
+                margin-top: 100px;
+            }
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 1.2rem;
+            }
+            .countdown-timer {
+                max-width: 300px;
+            }
+            #timer-display {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <i class="fas fa-bars mobile-menu-icon" id="mobileMenuBtn"></i>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#value-prop-section">Why Feng Shui?</a></li>
+            <li><a href="#testimonials-section">Success Stories</a></li>
+            <li><a href="#">About Instructor</a></li>
+        </ul>
+    </div>
+
+    <header class="header-nav">
+        <nav>
+            <ul>
+                <li><a href="#value-prop-section">Why Feng Shui?</a></li>
+                <li><a href="#testimonials-section">Success Stories</a></li>
+                <li><a href="#">About Instructor</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="feng-shui-hero">
+        <div class="hero-content">
+            <h1>The Ultimate Feng Shui Course for a Harmonious Home.</h1>
+            <p>Learn the secrets to creating a space that enhances your life, relationships, and well-being.</p>
+            
+            <a href="bridge-page.html" class="cta-button">Enroll Now & Find Your Harmony</a>
+            
+            <div class="countdown-timer">
+                <p>The free offer expires in:</p>
+                <div id="timer-display"></div>
+            </div>
+        </div>
+    </div>
+    
+    <section id="value-prop-section" class="value-prop-section">
+        <h2 class="section-heading">What You'll Achieve with This Course</h2>
+        <div class="value-props-grid">
+            <div class="prop-item">
+                <i class="fas fa-home"></i>
+                <h3>Create Harmonious Spaces</h3>
+                <p>Learn to arrange your environment to flow with positive energy, enhancing every room.</p>
+            </div>
+            <div class="prop-item">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Boost Well-being & Joy</h3>
+                <p>Discover how simple changes can reduce stress, improve mood, and invite more happiness into your life.</p>
+            </div>
+            <div class="prop-item">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Attract Abundance & Prosperity</h3>
+                <p>Utilize Feng Shui principles to open pathways for financial growth and overall abundance.</p>
+            </div>
+            <div class="prop-item">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Gain Lasting Knowledge</h3>
+                <p>Empower yourself with practical, timeless wisdom to continuously optimize your living space.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials-section" class="testimonials-section">
+        <h2 class="section-heading">What Our Students Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial-item">
+                <i class="fas fa-user-circle client-icon"></i>
+                <p>"My home finally feels like a sanctuary. This course changed everything! The principles are easy to follow and incredibly effective."</p>
+            </div>
+            <div class="testimonial-item">
+                <i class="fas fa-user-circle client-icon"></i>
+                <p>"Amazing insights! I feel more peaceful and productive since applying these tips. Highly recommend!"</p>
+                <h4>David L.</h4>
+            </div>
+            <div class="testimonial-item">
+                <i class="fas fa-user-circle client-icon"></i>
+                <p>"This course is a game-changer. I have a new perspective on my living space, and the results have been fantastic."</p>
+                <h4>Emily R.</h4>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Set the date and time the offer ends
+        const offerEndTime = new Date("August 30, 2025 23:59:59").getTime();
+
+        // Update the count down every 1 second
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = offerEndTime - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timer-display").innerHTML = `
+                <span class="timer-value">${days}</span><span class="timer-label">d</span> 
+                <span class="timer-value">${hours}</span><span class="timer-label">h</span> 
+                <span class="timer-value">${minutes}</span><span class="timer-label">m</span> 
+                <span class="timer-value">${seconds}</span><span class="timer-label">s</span>`;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer-display").innerHTML = "OFFER EXPIRED";
+            }
+        }, 1000);
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+    </script>
+</body>
+</html>
