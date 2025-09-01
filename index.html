@@ -450,39 +450,47 @@
         </div>
     </section>
 
-    <script>
-        // Set the date and time the offer ends
-        const offerEndTime = new Date("August 30, 2025 23:59:59").getTime();
+  <script>
+    // New script for a countdown that restarts every 24 hours
+    const offerDuration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+    const savedTime = localStorage.getItem('countdownEndTime');
+    let endTime;
 
-        // Update the count down every 1 second
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = offerEndTime - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if (savedTime && savedTime > Date.now()) {
+        endTime = savedTime;
+    } else {
+        endTime = Date.now() + offerDuration;
+        localStorage.setItem('countdownEndTime', endTime);
+    }
 
-            document.getElementById("timer-display").innerHTML = `
-                <span class="timer-value">${days}</span><span class="timer-label">d</span> 
-                <span class="timer-value">${hours}</span><span class="timer-label">h</span> 
-                <span class="timer-value">${minutes}</span><span class="timer-label">m</span> 
-                <span class="timer-value">${seconds}</span><span class="timer-label">s</span>`;
+    const x = setInterval(function() {
+        const now = Date.now();
+        const distance = endTime - now;
 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("timer-display").innerHTML = "OFFER EXPIRED";
-            }
-        }, 1000);
-        
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    </script>
+        document.getElementById("timer-display").innerHTML = `
+            <span class="timer-value">${hours}</span><span class="timer-label">h</span> 
+            <span class="timer-value">${minutes}</span><span class="timer-label">m</span> 
+            <span class="timer-value">${seconds}</span><span class="timer-label">s</span>`;
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer-display").innerHTML = "العرض متاح الآن!";
+            localStorage.removeItem('countdownEndTime');
+        }
+    }, 1000);
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
 </body>
 </html>
+
